@@ -17,7 +17,7 @@ builder.Services.AddDbContext<TodoContext>(options =>
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
 // Register services
-builder.Services.AddScoped<ITodoService, TodoService>();
+builder.Services.AddScoped<TodoService>();
 
 // Add Controllers
 builder.Services.AddControllers();

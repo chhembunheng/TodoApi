@@ -1,15 +1,14 @@
 # TodoApi - Professional ASP.NET Core REST API
 
-A professional, production-ready Todo API built with ASP.NET Core 9.0, Entity Framework Core, and Microsoft SQL Server. Features clean architecture, repository pattern, service layer, DTOs, comprehensive error handling, and Swagger documentation.
+A professional, production-ready Todo API built with ASP.NET Core 9.0, Entity Framework Core, and Microsoft SQL Server. Features clean architecture, repository pattern, service layer, DTOs, and comprehensive error handling.
 
 ## ✨ Features
 
 - **Clean Architecture** - Proper separation of concerns with layers
-- **Repository Pattern** - Data access abstraction
+- **Repository Pattern** - Data access abstraction with interface
 - **Service Layer** - Business logic separation
 - **DTOs** - Data Transfer Objects for API contracts
 - **Error Handling** - Comprehensive exception handling and logging
-- **Swagger UI** - Interactive API documentation
 - **CORS** - Cross-Origin Resource Sharing enabled
 - **Timestamps** - Automatic CreatedAt and UpdatedAt tracking
 - **Validation** - Model validation with data annotations
@@ -74,8 +73,6 @@ dotnet run
 ```
 
 The API will be available at: `http://localhost:5165`
-
-**Swagger UI** will be accessible at: `http://localhost:5165` (root URL in development)
 
 ## API Endpoints
 
@@ -181,8 +178,7 @@ TodoApi/
 │   ├── UpdateTodoDto.cs            # DTO for updating todos
 │   └── TodoDto.cs                  # DTO for todo responses
 ├── Interface/
-│   ├── ITodoRepository.cs          # Repository interface
-│   └── ITodoService.cs             # Service interface
+│   └── ITodoRepository.cs          # Repository interface
 ├── Migrations/                     # EF Core migrations
 │   └── [timestamp]_InitialCreate.cs
 ├── Model/
@@ -200,6 +196,10 @@ TodoApi/
 
 ## Architecture Layers
 
+```
+Controller → TodoService (class) → ITodoRepository → TodoRepository → Database
+```
+
 ### 1. **Controllers Layer**
 - Handles HTTP requests/responses
 - Input validation
@@ -207,14 +207,16 @@ TodoApi/
 - Returns proper HTTP status codes
 
 ### 2. **Service Layer**
-- Business logic
+- Business logic implementation
 - DTO mapping
 - Orchestrates repository calls
+- Injected directly as a class (no interface needed for simple projects)
 
 ### 3. **Repository Layer**
-- Data access abstraction
+- Data access abstraction via `ITodoRepository` interface
 - EF Core operations
 - Database queries
+- Interface allows swapping database implementations
 
 ### 4. **Data Layer**
 - DbContext configuration

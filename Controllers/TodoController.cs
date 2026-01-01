@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoApi.DTOs;
-using TodoApi.Interfaces;
+using TodoApi.Services;
 
 namespace TodoApi.Controllers
 {
@@ -9,10 +9,10 @@ namespace TodoApi.Controllers
     [Produces("application/json")]
     public class TodoController : ControllerBase
     {
-        private readonly ITodoService _todoService;
+        private readonly TodoService _todoService;
         private readonly ILogger<TodoController> _logger;
 
-        public TodoController(ITodoService todoService, ILogger<TodoController> logger)
+        public TodoController(TodoService todoService, ILogger<TodoController> logger)
         {
             _todoService = todoService;
             _logger = logger;

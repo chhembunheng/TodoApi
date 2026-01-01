@@ -4,7 +4,7 @@ using TodoApi.Model;
 
 namespace TodoApi.Services
 {
-    public class TodoService : ITodoService
+    public class TodoService
     {
         private readonly ITodoRepository _todoRepository;
 

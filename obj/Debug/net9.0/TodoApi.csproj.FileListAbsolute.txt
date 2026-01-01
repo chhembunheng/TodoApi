@@ -152,3 +152,4 @@
 /home/hengslytherinn/TodoApi/obj/Debug/net9.0/TodoApi.pdb
 /home/hengslytherinn/TodoApi/obj/Debug/net9.0/TodoApi.genruntimeconfig.cache
 /home/hengslytherinn/TodoApi/obj/Debug/net9.0/ref/TodoApi.dll
+/home/hengslytherinn/TodoApi/obj/Debug/net9.0/TodoApi.sourcelink.json
